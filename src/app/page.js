@@ -5,13 +5,16 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { Manrope } from "next/font/google";
 
+const manrope = Manrope({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
+
 export default function Page() {
     useEffect(() => {
-        AOS.init({ duration: 1000, once: true }); // Animatsiya 1s davom etadi va faqat 1 marta ishlaydi
+        AOS.init({ duration: 1000, once: true });
+        AOS.refresh(); // sahifa load bo‘lgandan keyin ham animatsiya ishlashini ta’minlaydi
     }, []);
 
     return (
-        <main className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-black via-[#0b0a0d] to-[#16121a] text-white overflow-hidden px-6 sm:px-10 md:px-16">
+        <main className={`relative min-h-screen flex items-center justify-center bg-gradient-to-b from-black via-[#0b0a0d] to-[#16121a] text-white overflow-hidden px-6 sm:px-10 md:px-16 ${manrope.className}`}>
             {/* Asosiy kontent */}
             <div className="max-w-2xl justify-center items-center text-center md:text-start z-10" data-aos="fade-up">
                 {/* Logo */}
